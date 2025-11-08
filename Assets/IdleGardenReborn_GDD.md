@@ -32,14 +32,14 @@
 - **Crit Multiplier:** 10x base, +2x per upgrade (max 50x), multiplied by crit decor.
 - **Combo Meter:** Base 50 cap; Combo Boost upgrades add +10 (max 100). Combo decays by 1 stack per second.
 - **Drops:**
-  - Tickets: +1 on crit (3% chance) and +3 every 10 harvests.
-  - Gems: 5% chance per tap and per harvest.
+  - Tickets: +1 on crit (3% chance), +3 every 10 harvests, and bonus rolls from late-game blooms.
+  - Gems: 5% chance per tap; harvest gem chance now seed-specific (0.8–2% on cosmic blooms, legacy blooms default 5%).
 - **Visual Feedback:** Popout numbers, crit coloration, combo ring fill.
 
 ## Plots (Idle Production)
 - **Layout:** Eight surrounding plots (indices 0–7) plus central tap flower.
 - **Unlock Cost:** Locked plots require credits (cost = 400 + 300 × plot index). Locked plots show “Unlock?” and cost pill.
-- **Seeds:** 14 tiers with 40% profit margin (yield = cost × 1.4) and themed emojis. Grow times span 12–480 seconds.
+- **Seeds:** 19 tiers with 40% profit margin (yield = cost × 1.4) and themed emojis. Grow times span 12–780 seconds, with cosmic blooms adding rare drop chances.
 - **Harvest:**
   - Base yield multiplied by rarity roll (Common×1, Rare×2, Epic×4, Legend×8).
   - Additional bonuses from decor (`tapYield`) and boosters (`globalCredits`).
@@ -54,6 +54,13 @@
 | Tulip | 110 | 18 | 154 | 🌷 |
 | … | … | … | … | … |
 | Celestial Lotus | 12,000 | 480 | 16,800 | 🪐 |
+| Nebula Orchid | 20,000 | 540 | 28,000 | 🌠 |
+| Solstice Lily | 35,000 | 600 | 49,000 | ☀️ |
+| Aurora Crown | 52,000 | 660 | 72,800 | 🌈 |
+| Mythic Starflower | 75,000 | 720 | 105,000 | 🌟 |
+| Eternal Crown | 100,000 | 780 | 140,000 | 💫 |
+
+- **Cosmic Bloom Bonus Drops:** Nebula Orchid (0.8% 💎 / 0.3% 🎟️), Solstice Lily (1.0% 💎 / 0.4% 🎟️), Aurora Crown (1.2% 💎 / 0.5% 🎟️), Mythic Starflower (1.5% 💎 / 0.6% 🎟️), Eternal Crown (2.0% 💎 / 0.8% 🎟️).
 
 ## Upgrades
 - **Tap Power +1:** +1 base tap damage; cost scales ×2 per level.
@@ -77,8 +84,8 @@
 
 ## Boosters (Time-Limited)
 - **Bloom Burst (25 tickets, 30s):** +50% tap power, +2% crit chance.
-- **Seed Rush (20 tickets, 60s):** +30% grow speed.
-- **Fortune Aura (40 tickets, 45s):** +50% rarity weight.
+- **Seed Rush (20 tickets, 10m):** +30% grow speed.
+- **Fortune Aura (40 tickets, 30m):** +50% rarity weight.
 - **Golden Popups (30 tickets, 30s):** +25% credits from all sources.
 - Boosters show timers and active state; bonuses panel lists remaining durations.
 

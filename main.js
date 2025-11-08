@@ -36,7 +36,12 @@ const DATA = {
     { id: 'moonflower', name: 'Moonflower', cost: 4500, grow: 220, yield: 6300, spr: '🌙', desc: 'Night-blooming marvel with stellar rarity chances.' },
     { id: 'starlit', name: 'Starlit Iris', cost: 6500, grow: 280, yield: 9100, spr: '✨', desc: 'Nebula-touched petals shimmer with crit energy.' },
     { id: 'aurora', name: 'Aurora Bloom', cost: 9000, grow: 360, yield: 12600, spr: '🌌', desc: 'Polar blossoms that pulse with global credit bonuses.' },
-    { id: 'celestial', name: 'Celestial Lotus', cost: 12000, grow: 480, yield: 16800, spr: '🪐', desc: 'Garden apex flower drawing cosmic fortune to every plot.' }
+    { id: 'celestial', name: 'Celestial Lotus', cost: 12000, grow: 480, yield: 16800, spr: '🪐', desc: 'Garden apex flower drawing cosmic fortune to every plot.' },
+    { id: 'nebula', name: 'Nebula Orchid', cost: 20000, grow: 540, yield: 28000, spr: '🌠', desc: 'Starlit bloom humming with distant stardust dividends.', gemChance: 0.008, ticketChance: 0.003 },
+    { id: 'solstice', name: 'Solstice Lily', cost: 35000, grow: 600, yield: 49000, spr: '☀️', desc: 'Radiant petals channel sunflare surges and rare tickets.', gemChance: 0.01, ticketChance: 0.004 },
+    { id: 'auroracrown', name: 'Aurora Crown', cost: 52000, grow: 660, yield: 72800, spr: '🌈', desc: 'Auroral halo weaves shimmering rewards across the garden.', gemChance: 0.012, ticketChance: 0.005 },
+    { id: 'mythicstar', name: 'Mythic Starflower', cost: 75000, grow: 720, yield: 105000, spr: '🌟', desc: 'Legend-touched bloom whispering of premium windfalls.', gemChance: 0.015, ticketChance: 0.006 },
+    { id: 'eternal', name: 'Eternal Crown', cost: 100000, grow: 780, yield: 140000, spr: '💫', desc: 'Limitless petals with a rare promise of gems and tickets.', gemChance: 0.02, ticketChance: 0.008 }
   ],
   upgrades: {
     tapPower: { name: 'Tap Power +1', base: 100, scale: 2, desc: 'Increase base tap payout by +1 credit per tap.' },
@@ -55,8 +60,8 @@ const DATA = {
   ],
   boosters: [
     { id: 'bloom', name: 'Bloom Burst', tickets: 25, dur: 30, effects: { tapPower: 0.5, critChance: 0.02 }, desc: '+50% tap power and +2% crit chance for 30s.' },
-    { id: 'seedrush', name: 'Seed Rush', tickets: 20, dur: 60, effects: { growSpeed: 0.3 }, desc: '+30% growth speed for one minute.' },
-    { id: 'fortune', name: 'Fortune Aura', tickets: 40, dur: 45, effects: { rarityWeight: 0.5 }, desc: '+50% rarity odds for harvests during the aura.' },
+    { id: 'seedrush', name: 'Seed Rush', tickets: 20, dur: 600, effects: { growSpeed: 0.3 }, desc: '+30% growth speed for ten minutes.' },
+    { id: 'fortune', name: 'Fortune Aura', tickets: 40, dur: 1800, effects: { rarityWeight: 0.5 }, desc: '+50% rarity odds for harvests during the aura.' },
     { id: 'golden', name: 'Golden Popups', tickets: 30, dur: 30, effects: { globalCredits: 0.25 }, desc: '+25% credits from all sources for 30s.' }
   ]
 };
@@ -161,6 +166,21 @@ function rollRarity(extra) {
     if (t <= 0) return r;
   }
   return pool[0];
+}
+
+function formatChance(val) {
+  if (!val) return '';
+  const pct = val * 100;
+  if (pct >= 1) return `${Math.round(pct)}%`;
+  if (pct >= 0.1) return `${pct.toFixed(1)}%`;
+  return `${pct.toFixed(2)}%`;
+}
+
+function seedDropSummary(seed) {
+  const parts = [];
+  if (seed.gemChance) parts.push(`${formatChance(seed.gemChance)} 💎`);
+  if (seed.ticketChance) parts.push(`${formatChance(seed.ticketChance)} 🎟️`);
+  return parts.join(' / ');
 }
 
 function activeBoost(id) {
@@ -731,6 +751,7 @@ function openSeedPicker(idx) {
     b.type = 'button';
     b.className = 'card';
     const profit = s.yield - s.cost;
+    const bonusDrops = seedDropSummary(s);
     const minHarvest = s.yield;
     const maxHarvest = Math.round(s.yield * MAX_RARITY_MULT);
     b.innerHTML = `
@@ -738,6 +759,7 @@ function openSeedPicker(idx) {
       <div class="meta">💰 ${s.cost.toLocaleString()} · ⏱️ ${s.grow}s</div>
       <div class="meta">Harvest: ${minHarvest.toLocaleString()} - ${maxHarvest.toLocaleString()} 💰</div>
       <div class="meta">Net +${profit.toLocaleString()} 💰 (base)</div>
+      ${bonusDrops ? `<div class="meta">Bonus Drops: ${bonusDrops}</div>` : ''}
       <p class="meta seed-desc">${s.desc}</p>
     `;
     b.onclick = () => {
@@ -766,7 +788,9 @@ function harvest(idx) {
   state.harvestsThisSession += 1;
   state.stats.totalHarvests += 1;
   if (state.harvestsThisSession % 10 === 0) state.tickets += 3;
-  if (Math.random() < 0.05) state.gems += 1;
+  const gemChance = typeof sdef.gemChance === 'number' ? sdef.gemChance : 0.05;
+  if (Math.random() < gemChance) state.gems += 1;
+  if (typeof sdef.ticketChance === 'number' && Math.random() < sdef.ticketChance) state.tickets += 1;
   const el = $(`.plot[data-idx="${idx}"]`);
   const pop = document.createElement('div');
   pop.className = 'popup';
@@ -842,6 +866,7 @@ function buildPanels() {
       <div class="stat-line"><span>Grow</span><span>${s.grow}s</span></div>
       <div class="stat-line"><span>Harvest</span><span>${minHarvest.toLocaleString()} - ${maxHarvest.toLocaleString()} 💰</span></div>
       <div class="stat-line"><span>Net</span><span>+${profit.toLocaleString()} 💰</span></div>
+      ${bonusDrops ? `<div class="stat-line"><span>Bonus Drops</span><span>${bonusDrops}</span></div>` : ''}
       <p class="desc">${s.desc}</p>
     `;
     compendiumBody.appendChild(item);
