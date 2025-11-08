@@ -55,15 +55,11 @@ export function ProjectDetailPanel({ project }: Props) {
 
       <div className="flex flex-col gap-6">
         <div className="overflow-hidden rounded-3xl border border-neutral-soft/80 bg-surface-muted/60 shadow-[0_24px_48px_rgba(15,23,42,0.08)] transition duration-700 ease-gentle-out hover:border-accent/40">
-          <video
-            key={project.media}
+          <img
+            src={project.artwork}
+            alt={`${project.title} artwork`}
             className="h-full w-full object-cover"
-            src={project.media}
-            autoPlay
-            loop
-            muted
-            playsInline
-            controls
+            loading="lazy"
           />
         </div>
         <div className="flex items-center justify-between text-[0.65rem] uppercase tracking-[0.4em] text-text/45">

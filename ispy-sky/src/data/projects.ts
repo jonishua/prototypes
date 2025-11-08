@@ -8,7 +8,7 @@ export type ProjectEntry = {
   description: string;
   ctaLabel: string;
   ctaHref: string;
-  media: string;
+  artwork: string;
   tags: string[];
   status: ProjectStatus;
 };
@@ -23,7 +23,7 @@ export const projects: ProjectEntry[] = [
       "Cultivate a serene pocket world where time is your ally. Idle Garden blends incremental systems with lush micro-interactions, letting players coax bioluminescent flora to life while the vaporwave skyline drifts overhead.",
     ctaLabel: "Play Prototype",
     ctaHref: "/idle-garden/index.html",
-    media: "/media/idle-garden.mp4",
+    artwork: "/media/idle-garden-reborn.jpg",
     tags: ["WebGL", "Cursor AI", "Incremental"],
     status: "Playable"
   },
@@ -36,7 +36,7 @@ export const projects: ProjectEntry[] = [
       "Drill deep into neon-veined caverns and orchestrate a cascade of autonomous rigs. Gold Mine Tycoon explores tactile automation, resource alchemy, and synth-forward UI design for stratified empire building.",
     ctaLabel: "Play Prototype",
     ctaHref: "/gold-mine/index.html",
-    media: "/media/gold-mine.mp4",
+    artwork: "/media/gold-mine-tycoon.jpg",
     tags: ["Prototype", "Economy"],
     status: "Playable"
   },
@@ -49,7 +49,7 @@ export const projects: ProjectEntry[] = [
       "An orchestration of influence, loyalty, and neon-lit intrigue. Mafia Syndicate experiments with branching timelines, faction drama, and high-contrast environmental storytelling carved from vaporwave noir.",
     ctaLabel: "View Concept",
     ctaHref: "#",
-    media: "/media/mafia-syndicate.mp4",
+    artwork: "/media/mafia-syndicate.jpg",
     tags: ["Narrative", "Strategy"],
     status: "In Pre-Production"
   }

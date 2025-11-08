@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
-import type { ProjectEntry } from "@/data/projects";
 import { useMemo } from "react";
+import Link from "next/link";
+import type { ProjectEntry } from "@/data/projects";
 
 type Props = {
   projects: ProjectEntry[];
@@ -111,15 +111,11 @@ export function ProjectGallery({ projects }: Props) {
 
                 <div className="flex flex-col gap-6 border-t border-neutral-soft/80 bg-surface-muted/60 p-8">
                   <div className="overflow-hidden rounded-2xl border border-neutral-soft/70 bg-surface shadow-[0_16px_36px_rgba(15,23,42,0.06)] transition duration-700 group-hover:border-accent/35">
-                    <video
-                      key={project.media}
-                      src={project.media}
-                      className="h-full w-full object-cover"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      controls
+                    <img
+                      src={project.artwork}
+                      alt={`${project.title} artwork`}
+                      className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.015]"
+                      loading="lazy"
                     />
                   </div>
 
