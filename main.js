@@ -856,6 +856,7 @@ function buildPanels() {
   compendiumBody.className = 'compendium-body';
   DATA.seeds.forEach((s) => {
     const profit = s.yield - s.cost;
+    const bonusDrops = seedDropSummary(s);
     const minHarvest = s.yield;
     const maxHarvest = Math.round(s.yield * MAX_RARITY_MULT);
     const item = document.createElement('div');
