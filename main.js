@@ -1078,6 +1078,13 @@ if (seedSortSelect) {
   });
 }
 
+$$('.dialog-close').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const dlg = btn.closest('dialog');
+    if (dlg) dlg.close();
+  });
+});
+
 // --- LOOP ---------------------------------------------------------------
 function tick() {
   removeExpiredBoosters();

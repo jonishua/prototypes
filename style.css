@@ -2,6 +2,10 @@
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
 body{padding:env(safe-area-inset-top) env(safe-area-inset-right) calc(16px + env(safe-area-inset-bottom)) env(safe-area-inset-left)}
+.app dialog{position:relative}
+.dialog-close{position:absolute;top:12px;right:12px;border:0;background:transparent;font-size:20px;line-height:1;color:#425066;cursor:pointer;padding:4px;border-radius:999px}
+.dialog-close:hover{background:rgba(66,80,102,.08)}
+.dialog-close:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 .app{max-width:430px;margin:0 auto;display:flex;flex-direction:column;min-height:100dvh}
 .topbar{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:12px 14px;background:var(--card);border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .statusbar{margin-top:8px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px;background:var(--card);padding:10px 14px;border-radius:14px;box-shadow:0 1px 6px rgba(0,0,0,.05);align-items:center}
