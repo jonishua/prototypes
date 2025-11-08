@@ -1,0 +1,39 @@
+# macOS
+.DS_Store
+
+# Node / Next.js
+ispy-sky/node_modules/
+ispy-sky/.next/
+ispy-sky/out/
+ispy-sky/.turbo/
+ispy-sky/.vercel/
+
+# Local env files
+ispy-sky/.env*
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Unity
+Mine/Library/
+Mine/Logs/
+Mine/Temp/
+Mine/obj/
+Mine/Build/
+Mine/[Ll]ibrary/
+Mine/[Tt]emp/
+Mine/[Oo]bj/
+Mine/[Bb]uild/
+Mine/[Bb]uilds/
+Mine/[Uu]ser[Ss]ettings/
+
+# Unity generated project files
+Mine/*.csproj
+Mine/*.sln
+Mine/*.userprefs
+
+
