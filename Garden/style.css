@@ -53,7 +53,7 @@ body{padding:env(safe-area-inset-top) env(safe-area-inset-right) calc(16px + env
 .combo{position:absolute;inset:6px;border-radius:999px;border:3px solid #0002}
 .combo.fill{border-color:#0006}
 .dock{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:8px 12px}
-.dock-btn{background:var(--card);border:1px solid var(--soft);border-radius:12px;padding:10px;font-weight:600}
+.dock-btn{background:var(--card);border:1px solid var(--soft);border-radius:12px;padding:10px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;color:var(--ink);font-size:14px;line-height:1;white-space:nowrap}
 .dock-btn.active{outline:3px solid #0001}
 .tray{background:var(--card);border-top:1px solid var(--soft);padding:8px 12px;border-radius:16px;min-height:220px;display:flex;flex-direction:column;overflow-y:auto}
 .panel{display:none;gap:8px;grid-template-columns:repeat(3,1fr);margin-top:4px}
