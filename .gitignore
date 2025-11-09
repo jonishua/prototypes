@@ -2,14 +2,17 @@
 .DS_Store
 
 # Node / Next.js
-ispy-sky/node_modules/
-ispy-sky/.next/
-ispy-sky/out/
-ispy-sky/.turbo/
-ispy-sky/.vercel/
+node_modules/
+.next/
+out/
+.turbo/
+.vercel/
+
+# Generated game assets
+public/games/
 
 # Local env files
-ispy-sky/.env*
+.env*
 
 # Logs
 *.log
@@ -18,7 +21,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Unity
+# Unity (legacy project remains ignored)
 Mine/Library/
 Mine/Logs/
 Mine/Temp/

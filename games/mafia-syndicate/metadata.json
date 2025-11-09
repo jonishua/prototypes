@@ -1,0 +1,13 @@
+{
+  "id": "mafia-syndicate",
+  "slug": "mafia-syndicate",
+  "title": "Mafia Syndicate",
+  "blurb": "Narrative-driven strategy set in a neon-noir city.",
+  "description": "An orchestration of influence, loyalty, and neon-lit intrigue. Mafia Syndicate experiments with branching timelines, faction drama, and high-contrast environmental storytelling carved from vaporwave noir.",
+  "ctaLabel": "View Concept",
+  "ctaHref": "/games/mafia-syndicate/index.html",
+  "artwork": "/games/mafia-syndicate/thumbnail.jpg",
+  "tags": ["Narrative", "Strategy"],
+  "status": "In Pre-Production",
+  "order": 3
+}
