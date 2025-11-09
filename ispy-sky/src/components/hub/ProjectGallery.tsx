@@ -10,15 +10,14 @@ type Props = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40, rotate: -0.6 },
+  hidden: { opacity: 0, y: 36 },
   show: (index: number) => ({
     opacity: 1,
     y: 0,
-    rotate: index % 2 === 0 ? 0.4 : -0.2,
     transition: {
-      duration: 0.9,
-      ease: [0.16, 1, 0.3, 1],
-      delay: index * 0.08
+      duration: 0.6,
+      ease: "easeOut",
+      delay: index * 0.06
     }
   })
 };
@@ -78,7 +77,8 @@ export function ProjectGallery({ projects }: Props) {
                 key={project.id}
                 custom={index}
                 variants={cardVariants}
-                className={`group relative flex flex-col overflow-hidden rounded-3xl border border-neutral-soft bg-surface/95 shadow-subtle transition-all duration-700 ease-gentle-out hover:-translate-y-3 hover:border-accent/45 hover:shadow-soft ${layoutClass}`}
+                style={{ willChange: "transform, opacity" }}
+                className={`group relative flex flex-col overflow-hidden rounded-3xl border border-neutral-soft bg-surface/95 shadow-subtle transition-transform duration-500 ease-gentle-out hover:-translate-y-2 hover:border-accent/45 hover:shadow-soft ${layoutClass}`}
               >
                 <div className={`flex flex-1 flex-col gap-8 p-8 md:p-10 ${surfaceClass}`}>
                   <div className="flex items-start justify-between gap-6">
@@ -131,6 +131,7 @@ export function ProjectGallery({ projects }: Props) {
                     </Link>
                     <Link
                       href={`/projects/${project.slug}`}
+                      prefetch={false}
                       className="inline-flex items-center gap-2 text-text/55 transition duration-300 ease-gentle-out hover:text-text"
                     >
                       <span className="h-2 w-2 rounded-full border border-text/30" aria-hidden />
