@@ -37,7 +37,7 @@ export function ProjectDetailPanel({ project }: Props) {
         <div className="flex flex-wrap items-center gap-4 pt-6 text-[0.72rem] uppercase tracking-[0.4em]">
           <Link
             href={project.ctaHref}
-            prefetch={!isExternal}
+            prefetch={false}
             target={isExternal ? "_blank" : undefined}
             rel={isExternal ? "noreferrer noopener" : undefined}
             className="inline-flex items-center gap-3 rounded-full border border-accent/35 bg-accent px-7 py-3 text-white transition duration-500 ease-gentle-out hover:-translate-y-0.5 hover:shadow-subtle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
